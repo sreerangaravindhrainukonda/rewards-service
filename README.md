@@ -13,8 +13,11 @@ Given a record of every transaction during a three month period, calculate the r
 
 #### `Instructions for running the project on a local machine:`
 
-$ git clone Github profile link
+$ git clone https://github.com/sreerangaravindhrainukonda/rewards-service.git
 
 $ mvn spring-boot: run
 
 $ send X-API-KEY in header to authenticate the request
+
+$ `curl --location 'http://localhost:8080/api/customers/100' \
+--header 'X-API-KEY: test123' --data ''`
