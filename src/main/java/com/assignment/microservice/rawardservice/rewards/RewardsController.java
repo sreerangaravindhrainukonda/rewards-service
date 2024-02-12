@@ -2,7 +2,7 @@ package com.assignment.microservice.rawardservice.rewards;
 
 import java.util.List;
 
-import com.assignment.microservice.rawardservice.model.Customer;
+import com.assignment.microservice.rawardservice.model.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +18,16 @@ public class RewardsController {
 	
 
 	@GetMapping("/customers")
-	public List<Customer> findCustomerAll() {
-		return rewardsService.getCustomerAll();
+	public ResponseEntity<List<CustomerDTO>> findCustomerAll() {
+		List<CustomerDTO> customerAll = rewardsService.getCustomerAll();
+		return new ResponseEntity<List<CustomerDTO>>(customerAll, HttpStatus.OK);
 	}
 	
 	@GetMapping("/customers/{id}")
-	public ResponseEntity<Customer> getCustomer(@PathVariable Integer id) {
-		Customer customer = rewardsService.getCustomerById(id);
-		// The good practice is to convert the entity into dto before sending the response but for quick solution returning it as entity as DTOs
-		if (customer == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+	public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Integer id) {
+		CustomerDTO customerDTO = rewardsService.getCustomerById(id);
+		if (customerDTO == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<CustomerDTO>(customerDTO, HttpStatus.OK);
 	}
 	
 	

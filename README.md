@@ -20,4 +20,7 @@ $ mvn spring-boot: run
 $ send X-API-KEY in header to authenticate the request
 
 $ `curl --location 'http://localhost:8080/api/customers/100' \
---header 'X-API-KEY: test123' --data ''`
+--header 'X-API-KEY: test123'`
+
+$ `curl --location 'http://localhost:8080/api/customers' \
+--header 'X-API-KEY: test123'`
